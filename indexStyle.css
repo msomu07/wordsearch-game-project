@@ -1,0 +1,29 @@
+body {
+	text-align: center;
+}
+
+h1 {
+	font-family: cursive;
+	margin-top: 15%;
+	font-size: 150px;
+	margin-bottom: 0;
+}
+
+#instructions {
+	font-size: 30px;
+	text-decoration: underline;
+	border: none;
+	background-color: white;
+	font-family: monospace;
+	margin-top: 10px;
+}
+
+#play-button {
+	font-size: 100px;
+	background-color: rgb(193, 195, 243);
+	border: 5px solid slateblue;
+	border-radius: 7px;
+	font-weight: bold;
+	font-family: serif;
+	margin-bottom: 0;
+}
