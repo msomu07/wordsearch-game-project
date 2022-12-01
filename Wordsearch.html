@@ -1,0 +1,346 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Word Search</title>
+		<link rel="stylesheet" href="Wordsearch.css">
+	</head>
+	<body>
+		<h1>Word Search !!</h1>
+		
+		<button id="instructions" onclick="goToPage('tutorial.html')" style="position: absolute; right: 0;">
+			?
+		</button>
+		
+		<button id="menu" onclick="goToPage('index.html')" style="position: absolute; right: 0;">
+			Quit
+		</button>
+		
+		<div id="word-grid">
+			<table id = "row">
+				<tr>
+					<td class = "column-data">1</td>
+				</tr>
+				<tr>
+					<td class = "column-data">2</td>
+				</tr>
+				<tr>
+					<td class = "column-data">3</td>
+				</tr>
+				<tr>
+					<td class = "column-data">4</td>
+				</tr>
+				<tr>
+					<td class = "column-data">5</td>
+				</tr>
+				<tr>
+					<td class = "column-data">6</td>
+				</tr>
+				<tr>
+					<td class = "column-data">7</td>
+				</tr>
+				<tr>
+					<td class = "column-data">8</td>
+				</tr>
+				<tr>
+					<td class = "column-data">9</td>
+				</tr>
+				<tr>
+					<td class = "column-data">10</td>
+				</tr>
+			</table>
+			<table id = "main-table">
+				<tr id = "column">
+					<th>1</th>
+					<th>2</th>
+					<th>3</th>
+					<th>4</th>
+					<th>5</th>
+					<th>6</th>
+					<th>7</th>
+					<th>8</th>
+					<th>9</th>
+					<th>10</th>
+					<th>11</th>
+					<th>12</th>
+					<th>13</th>
+					<th>14</th>
+					<th>15</th>
+					<th>16</th>
+					<th>17</th>
+					<th>18</th>
+					<th>19</th>
+					<th>20</th>
+				</tr>
+				<tr> 
+					<td id = "cell00"></td>
+					<td id = "cell01"></td>
+					<td id = "cell02"></td>
+					<td id = "cell03"></td>
+					<td id = "cell04"></td>
+					<td id = "cell05"></td>
+					<td id = "cell06"></td>
+					<td id = "cell07"></td>
+					<td id = "cell08"></td>
+					<td id = "cell09"></td>
+					<td id = "cell010"></td>
+					<td id = "cell011"></td>
+					<td id = "cell012"></td>
+					<td id = "cell013"></td>
+					<td id = "cell014"></td>
+					<td id = "cell015"></td>
+					<td id = "cell016"></td>
+					<td id = "cell017"></td>
+					<td id = "cell018"></td>
+					<td id = "cell019"></td>
+				</tr>
+				<tr>
+					<td id = "cell10"></td>
+					<td id = "cell11"></td>
+					<td id = "cell12"></td>
+					<td id = "cell13"></td>
+					<td id = "cell14"></td>
+					<td id = "cell15"></td>
+					<td id = "cell16"></td>
+					<td id = "cell17"></td>
+					<td id = "cell18"></td>
+					<td id = "cell19"></td>
+					<td id = "cell110"></td>
+					<td id = "cell111"></td>
+					<td id = "cell112"></td>
+					<td id = "cell113"></td>
+					<td id = "cell114"></td>
+					<td id = "cell115"></td>
+					<td id = "cell116"></td>
+					<td id = "cell117"></td>
+					<td id = "cell118"></td>
+					<td id = "cell119"></td>
+				</tr>
+				<tr>
+					<td id = "cell20"></td>
+					<td id = "cell21"></td>
+					<td id = "cell22"></td>
+					<td id = "cell23"></td>
+					<td id = "cell24"></td>
+					<td id = "cell25"></td>
+					<td id = "cell26"></td>
+					<td id = "cell27"></td>
+					<td id = "cell28"></td>
+					<td id = "cell29"></td>
+					<td id = "cell210"></td>
+					<td id = "cell211"></td>
+					<td id = "cell212"></td>
+					<td id = "cell213"></td>
+					<td id = "cell214"></td>
+					<td id = "cell215"></td>
+					<td id = "cell216"></td>
+					<td id = "cell217"></td>
+					<td id = "cell218"></td>
+					<td id = "cell219"></td>
+				</tr>
+				<tr>
+					<td id = "cell30"></td>
+					<td id = "cell31"></td>
+					<td id = "cell32"></td>
+					<td id = "cell33"></td>
+					<td id = "cell34"></td>
+					<td id = "cell35"></td>
+					<td id = "cell36"></td>
+					<td id = "cell37"></td>
+					<td id = "cell38"></td>
+					<td id = "cell39"></td>
+					<td id = "cell310"></td>
+					<td id = "cell311"></td>
+					<td id = "cell312"></td>
+					<td id = "cell313"></td>
+					<td id = "cell314"></td>
+					<td id = "cell315"></td>
+					<td id = "cell316"></td>
+					<td id = "cell317"></td>
+					<td id = "cell318"></td>
+					<td id = "cell319"></td>
+				</tr>
+				<tr>
+					<td id = "cell40"></td>
+					<td id = "cell41"></td>
+					<td id = "cell42"></td>
+					<td id = "cell43"></td>
+					<td id = "cell44"></td>
+					<td id = "cell45"></td>
+					<td id = "cell46"></td>
+					<td id = "cell47"></td>
+					<td id = "cell48"></td>
+					<td id = "cell49"></td>
+					<td id = "cell410"></td>
+					<td id = "cell411"></td>
+					<td id = "cell412"></td>
+					<td id = "cell413"></td>
+					<td id = "cell414"></td>
+					<td id = "cell415"></td>
+					<td id = "cell416"></td>
+					<td id = "cell417"></td>
+					<td id = "cell418"></td>
+					<td id = "cell419"></td>
+				</tr>
+				<tr>
+					<td id = "cell50"></td>
+					<td id = "cell51"></td>
+					<td id = "cell52"></td>
+					<td id = "cell53"></td>
+					<td id = "cell54"></td>
+					<td id = "cell55"></td>
+					<td id = "cell56"></td>
+					<td id = "cell57"></td>
+					<td id = "cell58"></td>
+					<td id = "cell59"></td>
+					<td id = "cell510"></td>
+					<td id = "cell511"></td>
+					<td id = "cell512"></td>
+					<td id = "cell513"></td>
+					<td id = "cell514"></td>
+					<td id = "cell515"></td>
+					<td id = "cell516"></td>
+					<td id = "cell517"></td>
+					<td id = "cell518"></td>
+					<td id = "cell519"></td>
+				</tr>
+				<tr>
+					<td id = "cell60"></td>
+					<td id = "cell61"></td>
+					<td id = "cell62"></td>
+					<td id = "cell63"></td>
+					<td id = "cell64"></td>
+					<td id = "cell65"></td>
+					<td id = "cell66"></td>
+					<td id = "cell67"></td>
+					<td id = "cell68"></td>
+					<td id = "cell69"></td>
+					<td id = "cell610"></td>
+					<td id = "cell611"></td>
+					<td id = "cell612"></td>
+					<td id = "cell613"></td>
+					<td id = "cell614"></td>
+					<td id = "cell615"></td>
+					<td id = "cell616"></td>
+					<td id = "cell617"></td>
+					<td id = "cell618"></td>
+					<td id = "cell619"></td>
+				</tr>
+				<tr>
+					<td id = "cell70"></td>
+					<td id = "cell71"></td>
+					<td id = "cell72"></td>
+					<td id = "cell73"></td>
+					<td id = "cell74"></td>
+					<td id = "cell75"></td>
+					<td id = "cell76"></td>
+					<td id = "cell77"></td>
+					<td id = "cell78"></td>
+					<td id = "cell79"></td>
+					<td id = "cell710"></td>
+					<td id = "cell711"></td>
+					<td id = "cell712"></td>
+					<td id = "cell713"></td>
+					<td id = "cell714"></td>
+					<td id = "cell715"></td>
+					<td id = "cell716"></td>
+					<td id = "cell717"></td>
+					<td id = "cell718"></td>
+					<td id = "cell719"></td>
+				</tr>
+				<tr>
+					<td id = "cell80"></td>
+					<td id = "cell81"></td>
+					<td id = "cell82"></td>
+					<td id = "cell83"></td>
+					<td id = "cell84"></td>
+					<td id = "cell85"></td>
+					<td id = "cell86"></td>
+					<td id = "cell87"></td>
+					<td id = "cell88"></td>
+					<td id = "cell89"></td>
+					<td id = "cell810"></td>
+					<td id = "cell811"></td>
+					<td id = "cell812"></td>
+					<td id = "cell813"></td>
+					<td id = "cell814"></td>
+					<td id = "cell815"></td>
+					<td id = "cell816"></td>
+					<td id = "cell817"></td>
+					<td id = "cell818"></td>
+					<td id = "cell819"></td>
+				</tr>
+				<tr>
+					<td id = "cell90"></td>
+					<td id = "cell91"></td>
+					<td id = "cell92"></td>
+					<td id = "cell93"></td>
+					<td id = "cell94"></td>
+					<td id = "cell95"></td>
+					<td id = "cell96"></td>
+					<td id = "cell97"></td>
+					<td id = "cell98"></td>
+					<td id = "cell99"></td>
+					<td id = "cell910"></td>
+					<td id = "cell911"></td>
+					<td id = "cell912"></td>
+					<td id = "cell913"></td>
+					<td id = "cell914"></td>
+					<td id = "cell915"></td>
+					<td id = "cell916"></td>
+					<td id = "cell917"></td>
+					<td id = "cell918"></td>
+					<td id = "cell919"></td>
+				</tr>
+			</table>
+		</div>
+		<br>
+		<br>
+		<br>
+		<br>
+		<!--<label for "number">x1</label>--->
+		<div id="input-div" style="position: absolute; right: 0;">
+			<div id = "labels">
+				<p class="label">choose a column number for the coordinate of your starting letter:</p>
+				<p class="label">choose a row number for the coordinate of your starting letter:</p>
+				<p class="label">choose a column number for the coordinate of your ending letter:</p>
+				<p class="label">choose a row number for the coordinate of your ending letter:</p>
+			</div>
+			<div id = "inputs">
+				<input class="input" id="x1" type="number" min="1" max="20" maxlength="2" size="2">
+				<input class="input" id="y1" type="number" min="1" max="10" maxlength="2" size="2">
+				<input class="input" id="x2" type="number" min="1" max="20" maxlength="2" size="2">
+				<input class="input" id="y2" type="number" min="1" max="10" maxlength="2" size="2">
+			</div>
+		</div>
+			<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+			
+		<p class = "boxes" id = "box1"></p>
+		<p class = "boxes" id = "box2"></p>
+		<p class = "boxes" id = "box3"></p>
+		<p class = "boxes" id = "box4"></p>
+		
+		<button id="button" onclick="checkWord()" style="position: absolute; right: 0;">
+			click to check word!
+		</button>
+		
+		<p id = "result"></p>
+		<p id = "error-message"></p>
+		
+		<table id = "word-bank">
+			<caption id = "word-bank-head">Word Bank</caption>
+			<tr>
+				<td class = "words" id = "word1"></td>
+				<td class = "words" id = "word2"></td>
+				<td class = "words" id = "word3"></td>
+				<td class = "words" id = "word4"></td>
+				<td class = "words" id = "word5"></td>
+			</tr>
+		</table>
+		
+		<script src="Wordsearch.js"></script>
+		<script>
+			run()
+		</script>
+	</body>
+</html>
