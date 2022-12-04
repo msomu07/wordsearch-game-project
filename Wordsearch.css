@@ -1,6 +1,21 @@
+@font-face {
+  font-family: motley-forces;
+  src: url(MotleyForcesRegular-w1rZ3.ttf);
+}
+
+@font-face {
+  font-family: shalma;
+  src: url(Shalma-Rp0Pe.otf);
+}
+
 h1 {
-	text-align: center;
-	text-shadow: 3px 3px rgb(237, 196, 214);
+	font-size: 70px;
+	text-align:left;
+	font-family: motley-forces;
+	margin-bottom: 2%;
+	margin-left: 10px;
+	color: rgb(236, 226, 208);
+	text-shadow: 2px 2px 5px rgb(162, 103, 105);
 }
 
 body {
@@ -8,7 +23,8 @@ body {
 	height: 20px;
 	width: 350px;
 	text-align: center;
-	background-color: rgb(259, 238, 232);
+	color: rgb(49, 47, 47);
+	background-color: rgb(213, 185, 178);
 }
 
 table {
@@ -21,16 +37,19 @@ table {
 }
 
 #column {
-	color: rgb(183, 185, 233);
-	text-shadow: 2px 2px 5px lavender;
+	color: rgb(236, 226, 208);
+	font-family: times;
+	text-shadow: 2px 2px 5px rgb(162, 103, 105);
 }
 
 #row {
-	color: rgb(183, 185, 233);
-	text-shadow: 2px 2px 5px lavender;
 	margin-top: 35px;
 	border-spacing : 10px;
+	
+	color: rgb(236, 226, 208);
+	font-family: times;
 	font-weight: bold;
+	text-shadow: 2px 2px 5px rgb(162, 103, 105);
 }
 
 td {
@@ -58,13 +77,15 @@ input {
 	
 .input {
 	margin-top: 40px;
-	background-color: rgb(197, 178, 213);
-	border: 2px solid white;
-	color: white;
 	text-align: center;
-	font-family: serif;
-	font-weight: bold;
 	font-size: 30px;
+	
+	background-color: rgb(162, 103, 105);
+	color: rgb(236, 226, 208);
+	border-radius: 20px;
+	border: 3px solid rgb(236, 226, 208);
+	font-family: times;
+	text-shadow: 2px 2px 5px rgb(49, 47, 47);
 }
 
 #labels {
@@ -77,71 +98,93 @@ input {
 }
 
 #word-grid {
-	background-color: rgb(255, 220, 226);
+	color: rgb(49, 47, 47);
 }
 
 #error-message {
-	color: white;
-	background-color: rgb(237, 196, 214);
 	font-size: 30px;
 	width: 750px;
+	color: rgb(49, 47, 47);
+	text-align: left;
+	padding-left: 190px;
+	border-radius: 20px;
+	font-family: times;
+	font-weight: bold;
+	text-shadow: 2px 2px 2px rgb(213, 185, 178);
 }
 
 .boxes {
 	margin-top: -20px;
 }
 
-#button {
+#myBtn {
 	position: absolute;
-	background-color: rgb(197, 178, 213);
-	font-family: monospace;
-	font-size: 30px;
-	color: white;
-	border: 2px solid white;
+	font-size: 130px;
 	margin-top: -100px;
 	margin-right: 5%;
-	width: 400px;
+	width: 420px;
+	height: 100px;
+	
+	background-color: rgb(162, 103, 105);
+	color: rgb(236, 226, 208);
+	border-radius: 20px;
+	border: 5px solid rgb(236, 226, 208);
+	padding-top: 10px;
+	font-family: shalma;
+	text-shadow: 2px 2px 5px rgb(49, 47, 47);
 }
 
 #instructions {
 	position: absolute;
 	margin-right: 2%;
 	margin-top: -75px;
-	background-color: rgb(193, 195, 243);
-	border: 3px solid white;
-	color: white;
 	border-radius: 30px;
-	font-weight: bold;
-	font-family: monospace;
-	font-size: 30px;
-	width: 45px;
+	font-size: 80px;
+	width: 50px;
+	height: 50px;
+	
+	background-color: rgb(162, 103, 105);
+	color: rgb(236, 226, 208);
+	border: 3px solid rgb(236, 226, 208);
+	font-family: shalma;
+	text-shadow: 2px 2px 5px rgb(49, 47, 47);
 }
 
 #menu {
 	position: absolute;
 	margin-right: 7%;
 	margin-top: -75px;
-	background-color: rgb(193, 195, 243);
-	border: 3px solid white;
-	color: white;
-	border-radius: 30px;
-	font-weight: bold;
-	font-family: monospace;
-	font-size: 30px;
-	width: 100px;
+	border-radius: 20px;
+	font-size: 80px;
+	width: 80px;
+	height: 50px;
+	
+	background-color: rgb(162, 103, 105);
+	color: rgb(236, 226, 208);
+	border: 3px solid rgb(236, 226, 208);
+	font-family: shalma;
+	text-shadow: 2px 2px 5px rgb(49, 47, 47);
 }
 
 #word-bank {
 	position: absolute;
 	float: center;
-	text-align: center;
-	width: 400px;
+	text-align: left;
+	margin-left: 10px;
+	
+	font-size: 20px;
+	font-family: times;
 }
 
 #word-bank-head {
-	width: 100px;
-	text-align: center;
-	border-bottom: 2px solid black;
+	text-align: left;
+	margin-left: 10px;
+	border-bottom: 2px solid rgb(49, 47, 47);
+	
+	font-size: 70px;
+	color: rgb(236, 226, 208);
+	font-family: motley-forces;
+	text-shadow: 2px 2px 5px rgb(162, 103, 105);
 }
 
 .words {

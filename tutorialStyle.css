@@ -1,1 +1,74 @@
+@font-face {
+  font-family: motley-forces;
+  src: url(MotleyForcesRegular-w1rZ3.ttf);
+}
 
+@font-face {
+  font-family: shalma;
+  src: url(Shalma-Rp0Pe.otf);
+}
+
+h1 {
+	font-size: 70px;
+	text-align:left;
+	font-family: motley-forces;
+	margin-bottom: 2%;
+	margin-left: 10px;
+	color: rgb(236, 226, 208);
+	text-shadow: 2px 2px 5px rgb(162, 103, 105);
+}
+
+body {
+	font-size: 20px;
+	height: 20px;
+	width: 350px;
+	text-align: center;
+	color: rgb(49, 47, 47);
+	background-color: rgb(213, 185, 178);
+}
+
+#instructions {
+	font-size: 30px;
+	background-color: rgb(162, 103, 105);
+	color: rgb(236, 226, 208);
+	border-radius: 20px;
+	border: 5px solid rgb(236, 226, 208);
+	height: auto;
+	padding: 30px;
+	margin-top: 20px;
+	margin-left: 10px;
+	font-family: times;
+	text-shadow: 2px 2px 5px rgb(49, 47, 47);
+}
+
+#play-button {
+	position: absolute;
+	margin-right: 10%;
+	margin-top: -75px;
+	border-radius: 20px;
+	font-size: 80px;
+	width: 80px;
+	height: 50px;
+	
+	background-color: rgb(162, 103, 105);
+	color: rgb(236, 226, 208);
+	border: 3px solid rgb(236, 226, 208);
+	font-family: shalma;
+	text-shadow: 2px 2px 5px rgb(49, 47, 47);
+}
+
+#menu {
+	position: absolute;
+	margin-right: 3%;
+	margin-top: -75px;
+	border-radius: 20px;
+	font-size: 80px;
+	width: 80px;
+	height: 50px;
+	
+	background-color: rgb(162, 103, 105);
+	color: rgb(236, 226, 208);
+	border: 3px solid rgb(236, 226, 208);
+	font-family: shalma;
+	text-shadow: 2px 2px 5px rgb(49, 47, 47);
+}
