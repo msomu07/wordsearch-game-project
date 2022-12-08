@@ -50,9 +50,10 @@ function numberEntered(e) {
 
  //printVals();
 
+var table;
 function run() { // main running method
 	// creating a 2d array called table to be the wordsearch table
-	var table = new Array(10); // create an empty array of length n
+	table = new Array(10); // create an empty array of length n
 	for (let i = 0; i < 10; i++) {
 		table[i] = new Array(20); // make each element an array
 		for (let j = 0; j < 20; j++) // setting each element to 0
@@ -61,7 +62,7 @@ function run() { // main running method
 	
 	//inserting a word; slay is just a test
 	var directions = ["vertical", "horizontal", "diagonal"];
-	var wordList = ["happy", "because", "sad", "cry", "slay"];
+	var wordList = ["abcd", "efghikj", "lmn", "opq", "rstu"];
 	printWordBank(wordList);
 	wordAndDirection = new Array(wordList.length); //lololol
 	for (let i = 0; i < wordList.length; i++) {
@@ -171,22 +172,22 @@ function checkWord()
 	
 	if(x1Input.value == Number(x1Input.value)) //idk what this does i just copied ur code
 		x1 = Number(x1Input.value);
-    if (x1 >= 1 && x1 <= 20) //checks if valid
+    if (x1 >= 1 && x1 <= 10) //checks if valid
 		xStart = true;
 			
 	if(y1Input.value == Number(y1Input.value)) //repeat for others
 		y1 = Number(y1Input.value);
-	if (y1 >= 1 && y1 <= 10)
+	if (y1 >= 1 && y1 <= 20)
 		yStart = true;
 
 	if(x2Input.value == Number(x2Input.value))
 		x2 = Number(x2Input.value);
-	if (x2 >= 1 && x2 <= 20)
+	if (x2 >= 1 && x2 <= 10)
 		xEnd = true;
         
 	if(y2Input.value == Number(y2Input.value))
 		y2 = Number(y2Input.value);
-	if (y2 >= 1 && y2 <= 10)
+	if (y2 >= 1 && y2 <= 20)
 		yEnd = true;
 		
 	if(x1 <= x2 && y1 <= y2) //checks if the start value comes before end value
@@ -205,7 +206,7 @@ function checkWord()
 		var modal = document.getElementById("myModal");
 
 		// Get the button that opens the modal
-		var btn = document.getElementById("myBtn");
+		var btn = document.getElementById("button");
 
 		// Get the <span> element that closes the modal
 		var span = document.getElementsByClassName("close")[0];
@@ -257,25 +258,25 @@ function checkDirection(x1, x2, y1, y2)
 		{
 			//document.getElementById("result").innerHTML += wordAndDirection[i][0];
 			isCorrect = checkHorizontal(wordAndDirection[i][0], x1, x2, y1, y2); //check these next
-			document.getElementById("result").innerHTML += isCorrect + i;
+			document.getElementById("result").innerHTML += isCorrect;
 		}
 		else if(wordAndDirection[i][1] == "vertical")
 		{
 			//document.getElementById("result").innerHTML += wordAndDirection[i][0];
 			isCorrect = checkVertical(wordAndDirection[i][0], x1, x2, y1, y2);
-			document.getElementById("result").innerHTML += isCorrect + i;
+			document.getElementById("result").innerHTML += isCorrect;
 		}
 		else if(wordAndDirection[i][1] == "diagonal")
 		{
 			//document.getElementById("result").innerHTML += wordAndDirection[i][0];
 			isCorrect = checkDiagonal(wordAndDirection[i][0], x1, x2, y1, y2);
-			document.getElementById("result").innerHTML += isCorrect + i;
+			document.getElementById("result").innerHTML += isCorrect;
 		}
 			
 		document.getElementById("result").innerHTML += "<br>";
 		
-		//if(isCorrect)
-			//break;
+		if(isCorrect)
+			break;
 	}
 	
 	return isCorrect;
@@ -283,35 +284,84 @@ function checkDirection(x1, x2, y1, y2)
 
 function checkHorizontal(word, x1, x2, y1, y2)
 {
-	/*for (let i = x1 - 1; i < x2; i++) //checks x coords, y coords are constant
+	document.getElementById("result").innerHTML += "horiz";
+	
+	for (let i = y1 - 1; i < y2; i++) //checks y coords, x coords are constant
 	{
-		//if(table[y1][i] != word.charAt(i))
-			//return false;
-	}*/
+		document.getElementById("result").innerHTML += table[x1-1][i];
+			
+		if(table[i][x1 - 1] != word.charAt(i))
+			return false;
+	}
 	return true;
 }
 
 function checkVertical(word, x1, x2, y1, y2)
 {
-	/*for (let i = y1 - 1; i < y2; i++) //checks y coords, x coords are constant
+	document.getElementById("result").innerHTML += "vert";
+	
+	for (let i = x1 - 1; i < x2; i++) //checks x coords, y coords are constant
 	{
-		//if(table[i][x1] != word.charAt(i))
-			//return false;
-	}*/
+		document.getElementById("result").innerHTML += table[i][y1-1];
+		
+		if(table[y1-1][i] != word.charAt(i))
+			return false;
+	}
 	return true;
 }
 
 function checkDiagonal(word, x1, x2, y1, y2)
 {
+	document.getElementById("result").innerHTML += "diag";
+	
 	let isCorrect = true;
-	/*for(let i = y1 - 1; i < y2; i++) //checks y coords
+	for(let i = 0; i < word.length; i++) //checks y coords
 	{
-		for (let j = x1 - 1; j < x2; j++) //checks x coords
-		{
-			//if(table[i][j] != word.charAt(i))
-				//isCorrect = false;
-		}
-	}*/
+		document.getElementById("result").innerHTML += table[x1 + i - 1][y1 + i - 1] ;
+				
+		if(table[i][j] != word.charAt(i))
+			isCorrect = false;
+	}
 	
 	return isCorrect;
+}
+
+/*
+function checkHorizontal(word, x1, x2, y1, y2)
+{
+	let guessedWord = "";
+	for (let i = x1 - 1; i < x2; i++) //checks x coords, y coords are constant
+		guessedWord += table[y1][i];
+	if (guessedWord == word)
+		return true;
+	else
+		return false;
+}
+
+function checkVertical(word, x1, x2, y1, y2)
+{
+	let guessedWord = "";
+	for (let i = y1 - 1; i < y2; i++) //checks x coords, y coords are constant
+		guessedWord += table[y1][i];
+	if (guessedWord == word)
+		return true;
+	else
+		return false;
+}
+
+function checkDiagonal(word, x1, x2, y1, y2)
+{
+	let guessedWord = "";
+	for (let i = y1 - 1; i < y2; i++) {//checks x coords, y coords are constant
+		for (let j = x1 - 1; j < x2; j++)
+			guessedWord += table[y1][i];
+	}
+	if (guessedWord == word)
+		return true;
+	else
+		return false;
+}*/
+
+function changeStyle() {
+	document.getElementById("button").style.backgroundColor = rgb(0, 0, 0);
 }
