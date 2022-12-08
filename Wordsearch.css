@@ -15,7 +15,7 @@ h1 {
 	margin-bottom: 2%;
 	margin-left: 10px;
 	color: rgb(236, 226, 208);
-	text-shadow: 2px 2px 5px rgb(162, 103, 105);
+	text-shadow: 2px 2px 5px rgb(182, 103, 105);
 }
 
 body {
@@ -24,7 +24,7 @@ body {
 	width: 350px;
 	text-align: center;
 	color: rgb(49, 47, 47);
-	background-color: rgb(213, 185, 178);
+	background-color: rgb(223, 185, 181);
 }
 
 table {
@@ -39,7 +39,7 @@ table {
 #column {
 	color: rgb(236, 226, 208);
 	font-family: times;
-	text-shadow: 2px 2px 5px rgb(162, 103, 105);
+	text-shadow: 2px 2px 5px rgb(182, 103, 105);
 }
 
 #row {
@@ -49,7 +49,7 @@ table {
 	color: rgb(236, 226, 208);
 	font-family: times;
 	font-weight: bold;
-	text-shadow: 2px 2px 5px rgb(162, 103, 105);
+	text-shadow: 2px 2px 5px rgb(182, 103, 105);
 }
 
 td {
@@ -80,7 +80,7 @@ input {
 	text-align: center;
 	font-size: 30px;
 	
-	background-color: rgb(162, 103, 105);
+	background-color: rgb(182, 103, 105);
 	color: rgb(236, 226, 208);
 	border-radius: 20px;
 	border: 3px solid rgb(236, 226, 208);
@@ -110,14 +110,14 @@ input {
 	border-radius: 20px;
 	font-family: times;
 	font-weight: bold;
-	text-shadow: 2px 2px 2px rgb(213, 185, 178);
+	text-shadow: 2px 2px 2px rgb(223, 185, 181);
 }
 
 .boxes {
 	margin-top: -20px;
 }
 
-#myBtn {
+#button {
 	position: absolute;
 	font-size: 130px;
 	margin-top: -100px;
@@ -125,7 +125,7 @@ input {
 	width: 420px;
 	height: 100px;
 	
-	background-color: rgb(162, 103, 105);
+	background-color: rgb(182, 103, 105);
 	color: rgb(236, 226, 208);
 	border-radius: 20px;
 	border: 5px solid rgb(236, 226, 208);
@@ -136,14 +136,14 @@ input {
 
 #instructions {
 	position: absolute;
-	margin-right: 2%;
-	margin-top: -75px;
+	margin-right: 120px;
+	margin-top: -90px;
 	border-radius: 30px;
 	font-size: 80px;
 	width: 50px;
 	height: 50px;
 	
-	background-color: rgb(162, 103, 105);
+	background-color: rgb(182, 103, 105);
 	color: rgb(236, 226, 208);
 	border: 3px solid rgb(236, 226, 208);
 	font-family: shalma;
@@ -152,14 +152,14 @@ input {
 
 #menu {
 	position: absolute;
-	margin-right: 7%;
-	margin-top: -75px;
+	margin-right: 20px;
+	margin-top: -90px;
 	border-radius: 20px;
 	font-size: 80px;
 	width: 80px;
 	height: 50px;
 	
-	background-color: rgb(162, 103, 105);
+	background-color: rgb(182, 103, 105);
 	color: rgb(236, 226, 208);
 	border: 3px solid rgb(236, 226, 208);
 	font-family: shalma;
@@ -184,7 +184,7 @@ input {
 	font-size: 70px;
 	color: rgb(236, 226, 208);
 	font-family: motley-forces;
-	text-shadow: 2px 2px 5px rgb(162, 103, 105);
+	text-shadow: 2px 2px 5px rgb(182, 103, 105);
 }
 
 .words {
