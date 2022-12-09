@@ -92,13 +92,14 @@ function displayTable(table) { // displays the 2d array as a table
 		for (let j = 0; j < 20; j++) {
             localStorage.setItem("c", "" + table[i][j]); // stores each value via local storage
 			document.getElementById("cell" + i + j).innerHTML = localStorage.getItem("c"); // puts on html
-			document.getElementById("cell" + i + j).style.color = "blue";
 		}
 	}
 }
 
 function turnBlue(i, j) {
 	document.getElementById("cell" + i + j).style.color = "blue";	
+	document.getElementById("cell" + i + j).style.fontWeight = "bold";	
+	document.getElementById("cell" + (i) + (j+1)).style.color = "blue";	
 }
 
 function insertWord(word, dir, table) {
@@ -167,8 +168,12 @@ let x2 = Number(x2Input.value);
 let y1 = Number(y1Input.value);
 let y2 = Number(y2Input.value);
 
+let valid;
+
 function checkWord()
 {
+	valid = true;
+	
 	let xStart = false;
 	let xEnd = false;
 	let yStart = false;
@@ -201,9 +206,9 @@ function checkWord()
 	/*document.getElementById("result").innerHTML += "" + x1 + " " + x2 + " " + y1 + " " + y2 +
 	"<br>" + "<br>";
     document.getElementById("result").innerHTML += "" + xStart + xEnd + yStart +
-    yEnd + "<br>" + "<br>";*/ //prints for checking   
+    yEnd + "<br>" + "<br>"; //prints for checking*/  
     
-	let valid = isValid(xStart, xEnd, yStart, yEnd, startBeforeEnd); //checks if all are true or not
+	valid = isValid(xStart, xEnd, yStart, yEnd, startBeforeEnd); //checks if all are true or not
 	
 	if(!valid)
 	{
@@ -233,15 +238,16 @@ function checkWord()
 		  }
 		}
 		
-		document.getElementById("error-message").innerHTML += "ERROR -- PLEASE CHECK THAT" //errormessage
+		document.getElementById("error-message").innerHTML = "ERROR -- PLEASE CHECK THAT" //errormessage
 		+ "<br>" + "✧  ALL VALUES HAVE BEEN ENTERED CORRECTLY" + "<br>" +
 		"✧  ALL VALUES ARE WITHIN THE GIVEN RANGE" + "<br>" +
 		"✧  START VALUE COMES *BEFORE* END VALUE";
 		
 	} else {
-		let isCorrect = true;
-		isCorrect = checkDirection(x1, x2, y1, y2);
-		document.getElementById("result").innerHTML += isCorrect; //if(isCorrect) --> highlight();
+		let isCorrect = checkDirection(x1, x2, y1, y2);
+		document.getElementById("result").innerHTML += isCorrect; 
+		if(isCorrect)
+			highlight(x1, y1, x2, y2);
 	}
 }
 
@@ -258,7 +264,7 @@ function checkDirection(x1, x2, y1, y2)
 	
 	for (let i = 0; i < wordAndDirection.length; i++) //checks if the word matches a word in wordList
 	{
-		//document.getElementById("result").innerHTML += wordAndDirection[i][0] + wordAndDirection[i][1];
+		//document.getElementById("result").innerHTML += wordAndDirection[i][0] + " " + wordAndDirection[i][1] + " ";
 		if(wordAndDirection[i][1] == "horizontal")
 		{
 			//document.getElementById("result").innerHTML += wordAndDirection[i][0];
@@ -289,84 +295,95 @@ function checkDirection(x1, x2, y1, y2)
 
 function checkHorizontal(word, x1, x2, y1, y2)
 {
-	document.getElementById("result").innerHTML += "horiz";
+	document.getElementById("result").innerHTML += "horiz ";
+	let thisWord = "";
 	
 	for (let i = y1 - 1; i < y2; i++) //checks y coords, x coords are constant
 	{
-		document.getElementById("result").innerHTML += table[x1-1][i];
+		if(table[x1 - 1][i] == null)
+			return false;
 			
-		if(table[i][x1 - 1] != word.charAt(i))
-			return false;
-	}
-	return true;
-}
-
-function checkVertical(word, x1, x2, y1, y2)
-{
-	document.getElementById("result").innerHTML += "vert";
-	
-	for (let i = x1 - 1; i < x2; i++) //checks x coords, y coords are constant
-	{
-		document.getElementById("result").innerHTML += table[i][y1-1];
+		thisWord += table[x1 - 1][i];
+		document.getElementById("result").innerHTML += "" + thisWord;
 		
-		if(table[y1-1][i] != word.charAt(i))
-			return false;
+		if(thisWord == word)
+			return true;
 	}
+	
+	if(thisWord != word)
+		return false;
+	
+	return true;
+}
+
+function checkVertical(word, x1, x2, y1, y2)
+{
+	document.getElementById("result").innerHTML += "vert ";
+	let thisWord = "";
+	
+	for (let i = x1 - 1; i < x2; i++) //checks x coords, y coords are constant
+	{
+		if(table[i][y1 - 1] == null)
+			return false;
+			
+		thisWord += table[i][y1 - 1];
+		document.getElementById("result").innerHTML += "" + thisWord;
+		
+		if(thisWord == word)
+			return true;
+	}
+	
+	if(thisWord != word)
+		return false;
+	
 	return true;
 }
 
 function checkDiagonal(word, x1, x2, y1, y2)
 {
-	document.getElementById("result").innerHTML += "diag";
+	document.getElementById("result").innerHTML += "diag ";
+	let thisWord = "";
 	
-	let isCorrect = true;
-	for(let i = 0; i < word.length; i++) //checks y coords
+	for(let i = 0; i < word.length; i++)
 	{
-		document.getElementById("result").innerHTML += table[x1 + i - 1][y1 + i - 1] ;
-				
-		if(table[i][j] != word.charAt(i))
-			isCorrect = false;
-	}
+		if(table[x1 + i - 1][y1 + i - 1] == null)
+			return false;
+			
+		thisWord += table[x1 + i - 1][y1 + i - 1];
+		document.getElementById("result").innerHTML += thisWord;
+		
+		if(thisWord == word)
+			return true;
+	}		
+		
+	if(thisWord != word)
+		return false;
 	
-	return isCorrect;
+	return true;
 }
 
-/*
-function checkHorizontal(word, x1, x2, y1, y2)
-{
-	let guessedWord = "";
-	for (let i = x1 - 1; i < x2; i++) //checks x coords, y coords are constant
-		guessedWord += table[y1][i];
-	if (guessedWord == word)
-		return true;
-	else
-		return false;
-}
-
-function checkVertical(word, x1, x2, y1, y2)
-{
-	let guessedWord = "";
-	for (let i = y1 - 1; i < y2; i++) //checks x coords, y coords are constant
-		guessedWord += table[y1][i];
-	if (guessedWord == word)
-		return true;
-	else
-		return false;
-}
-
-function checkDiagonal(word, x1, x2, y1, y2)
-{
-	let guessedWord = "";
-	for (let i = y1 - 1; i < y2; i++) {//checks x coords, y coords are constant
-		for (let j = x1 - 1; j < x2; j++)
-			guessedWord += table[y1][i];
-	}
-	if (guessedWord == word)
-		return true;
-	else
-		return false;
-}*/
-
-function changeStyle() {
-	document.getElementById("button").style.backgroundColor = rgb(0, 0, 0);
+function highlight(x1, y1, x2, y2) {
+    //style.color and style.fontWeight idea from w3schools https://www.w3schools.com/js/js_htmldom_css.asp
+    if (y1 == y2) {
+        for (let i = x1-1; i < x2; i++) {
+            document.getElementById("cell" + i + (y1-1)).style.color = "red";    
+            document.getElementById("cell" + i + (y1-1)).style.fontWeight = "bold";
+        }        
+    }    
+    
+    else if (x1 == x2) {
+        for (let i = y1-1; i < y2; i++) {
+            document.getElementById("cell" + (x1-1) + i).style.color = "red";    
+            document.getElementById("cell" + (x1-1) + i).style.fontWeight = "bold";
+        }
+    }    
+    
+    else {
+		let length = Math.abs(x1 - x2) + 1;
+		document.getElementById("result").innerHTML += length;
+        for (let i = 0; i < length; i++) {
+            document.getElementById("cell" + (x1 + i - 1) + (y1 + i - 1)).style.color = "red";    
+            document.getElementById("cell" + (x1 + i - 1) + (y1 + i - 1)).style.fontWeight = "bold";
+		}
+    }    
 }
