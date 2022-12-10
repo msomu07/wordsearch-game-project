@@ -45,9 +45,9 @@ table {
 }
 
 #row {
-	margin-top: 35px;
-	border-spacing : 10px;
-	
+	margin-top: 43px;
+	border-spacing : 10.04px;
+	margin-left: -5px;
 	color: rgb(236, 226, 208);
 	font-family: times;
 	font-weight: bold;
@@ -68,11 +68,10 @@ input {
 }
 
 #input-div {
-	position: absolute;
 	margin-top: -110px;
 	margin-left: 700px;
 	width: 400px;
-	margin-right: 13%;
+	margin-right: 11%;
 }
 
 .label {
@@ -109,7 +108,7 @@ input {
 #word-grid {
 	position: absolute;
 	color: rgb(49, 47, 47);
-	margin-left: 2%;
+	margin-left: 1%;
 }
 
 #error-message {
@@ -190,8 +189,7 @@ input {
 #word-bank-head {
 	text-align: left;
 	margin-left: 10px;
-	border-bottom: 2px solid rgb(49, 47, 47);
-	
+	border-bottom: 3px solid rgb(49, 47, 47);
 	font-size: 70px;
 	color: rgb(236, 226, 208);
 	font-family: motley-forces;
@@ -199,10 +197,31 @@ input {
 }
 
 .words {
-	width: 100px;
+	padding: 20px;
+	margin-top: -20px;
 }
 
 #slay {
 	margin-top: 300px;
 	float: right;
+}
+
+#result {
+	margin-top: 250px;
+}
+
+#error-message {
+	width: auto;
+	float: right;
+	margin-right: 17%;
+}
+
+.modal-content {
+	float: center;
+	width: auto;
+	overflow: auto;
+}
+
+#myModal {
+	width: 100;
 }
