@@ -356,6 +356,9 @@
 				<input class="input" id="x2" type="number" min="1" max="10" maxlength="2" size="2">
 				<input class="input" id="y2" type="number" min="1" max="20" maxlength="2" size="2">
 			</div>
+			<button id="button" onclick="checkWord()" id="checkButton">
+			click to check word!
+			</button>
 		</div>
 			<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 			
@@ -363,10 +366,6 @@
 		<p class = "boxes" id = "box2"></p>
 		<p class = "boxes" id = "box3"></p>
 		<p class = "boxes" id = "box4"></p>
-		
-		<button id="button" onclick="checkWord()" id="checkButton" style="position: absolute; right: 0;">
-			click to check word!
-		</button>
 		
 		
 		<!-- Modal tutorial from https://www.w3schools.com/howto/howto_css_modals.asp-->
@@ -376,8 +375,6 @@
 				<p id="error-message"></p>
 			</div>
 		</div>
-		
-		<p id = "result"></p>
 		
 		<table id = "word-bank">
 			<caption id = "word-bank-head">Word Bank</caption>
@@ -389,13 +386,13 @@
 				<td class = "words" id = "word5"></td>
 			</tr>
 		</table>
+		
+		<p id = "result"></p>
 				
 		<script src="Wordsearch.js"></script>
 		<script>
 			run()
 		</script>
-		
-		<button id = "slay" onclick = "turnBlue(1, 1)">click me</button>
 		
 	</body>
 </html>
