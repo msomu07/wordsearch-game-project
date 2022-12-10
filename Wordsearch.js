@@ -1,7 +1,7 @@
 function goToPage(nextPage)
 {
 	window.location.href = nextPage;
-	location.replace = nextPage;
+	location.replace(nextPage);
 }
 //----------------------------------------------------------------------
 let x1Input = document.querySelector("#x1");
@@ -19,7 +19,7 @@ y2Input.addEventListener("input", numberEntered, false);
 let wordAndDirection;
 
 function numberEntered(e) {
-        //printVals();
+        //checkWord();
 }
 
 /*function printVals() {
@@ -62,7 +62,7 @@ function run() { // main running method
 	
 	//inserting a word; slay is just a test
 	var directions = ["vertical", "horizontal", "diagonal"];
-	var wordList = ["abcd", "efghikj", "lmn", "opq", "rstu"];
+	var wordList = ["worm", "isopod", "live", "laugh", "potential"];
 	printWordBank(wordList);
 	wordAndDirection = new Array(wordList.length); //lololol
 	for (let i = 0; i < wordList.length; i++) {
@@ -75,12 +75,12 @@ function run() { // main running method
 	}
 	
 	// putting random letters wherever there isnt a word
-	/*for (let i = 0; i < 10; i++) {
+	for (let i = 0; i < 10; i++) {
 		for (let j = 0; j < 20; j++) {
-			if (table[i][j] == 0)
+			if (table[i][j] == ".")
 				table[i][j] = String.fromCharCode(Math.floor(Math.random()*26+97));
 		}
-	}*/
+	}
 	
 	displayTable(table);
 	
@@ -168,12 +168,10 @@ let x2 = Number(x2Input.value);
 let y1 = Number(y1Input.value);
 let y2 = Number(y2Input.value);
 
-let valid;
+let valid = true;
 
 function checkWord()
 {
-	valid = true;
-	
 	let xStart = false;
 	let xEnd = false;
 	let yStart = false;
@@ -216,13 +214,12 @@ function checkWord()
 		var modal = document.getElementById("myModal");
 
 		// Get the button that opens the modal
-		var btn = document.getElementById("button");
 
 		// Get the <span> element that closes the modal
 		var span = document.getElementsByClassName("close")[0];
 
 		// When the user clicks the button, open the modal 
-		btn.onclick = function() {
+		document.getElementById("button").onclick = function() {
 		  modal.style.display = "block";
 		}
 
@@ -245,7 +242,7 @@ function checkWord()
 		
 	} else {
 		let isCorrect = checkDirection(x1, x2, y1, y2);
-		document.getElementById("result").innerHTML += isCorrect; 
+		//document.getElementById("result").innerHTML += isCorrect; 
 		if(isCorrect)
 			highlight(x1, y1, x2, y2);
 	}
@@ -269,25 +266,28 @@ function checkDirection(x1, x2, y1, y2)
 		{
 			//document.getElementById("result").innerHTML += wordAndDirection[i][0];
 			isCorrect = checkHorizontal(wordAndDirection[i][0], x1, x2, y1, y2); //check these next
-			document.getElementById("result").innerHTML += isCorrect;
+			//document.getElementById("result").innerHTML += isCorrect;
 		}
 		else if(wordAndDirection[i][1] == "vertical")
 		{
 			//document.getElementById("result").innerHTML += wordAndDirection[i][0];
 			isCorrect = checkVertical(wordAndDirection[i][0], x1, x2, y1, y2);
-			document.getElementById("result").innerHTML += isCorrect;
+			//document.getElementById("result").innerHTML += isCorrect;
 		}
 		else if(wordAndDirection[i][1] == "diagonal")
 		{
 			//document.getElementById("result").innerHTML += wordAndDirection[i][0];
 			isCorrect = checkDiagonal(wordAndDirection[i][0], x1, x2, y1, y2);
-			document.getElementById("result").innerHTML += isCorrect;
+			//document.getElementById("result").innerHTML += isCorrect;
 		}
 			
-		document.getElementById("result").innerHTML += "<br>";
+		//document.getElementById("result").innerHTML += "<br>";
 		
 		if(isCorrect)
+		{
+			strikeThrough(i);
 			break;
+		}
 	}
 	
 	return isCorrect;
@@ -295,17 +295,17 @@ function checkDirection(x1, x2, y1, y2)
 
 function checkHorizontal(word, x1, x2, y1, y2)
 {
-	document.getElementById("result").innerHTML += "horiz ";
+	//document.getElementById("result").innerHTML += "horiz ";
 	let thisWord = "";
 	
 	for (let i = y1 - 1; i < y2; i++) //checks y coords, x coords are constant
 	{
-		if(table[x1 - 1][i] == null)
+		if(i >= 20)
 			return false;
 			
 		thisWord += table[x1 - 1][i];
-		document.getElementById("result").innerHTML += "" + thisWord;
-		
+		//document.getElementById("result").innerHTML += "" + thisWord;
+	
 		if(thisWord == word)
 			return true;
 	}
@@ -318,16 +318,16 @@ function checkHorizontal(word, x1, x2, y1, y2)
 
 function checkVertical(word, x1, x2, y1, y2)
 {
-	document.getElementById("result").innerHTML += "vert ";
+	//document.getElementById("result").innerHTML += "vert ";
 	let thisWord = "";
 	
 	for (let i = x1 - 1; i < x2; i++) //checks x coords, y coords are constant
 	{
-		if(table[i][y1 - 1] == null)
+		if(i >= 10)
 			return false;
 			
 		thisWord += table[i][y1 - 1];
-		document.getElementById("result").innerHTML += "" + thisWord;
+		//document.getElementById("result").innerHTML += "" + thisWord;
 		
 		if(thisWord == word)
 			return true;
@@ -341,16 +341,16 @@ function checkVertical(word, x1, x2, y1, y2)
 
 function checkDiagonal(word, x1, x2, y1, y2)
 {
-	document.getElementById("result").innerHTML += "diag ";
+	//document.getElementById("result").innerHTML += "diag ";
 	let thisWord = "";
 	
 	for(let i = 0; i < word.length; i++)
 	{
-		if(table[x1 + i - 1][y1 + i - 1] == null)
+		if(((x1 + i - 1) >= 10) || ((y1 + i - 1) >= 20))
 			return false;
 			
 		thisWord += table[x1 + i - 1][y1 + i - 1];
-		document.getElementById("result").innerHTML += thisWord;
+		//document.getElementById("result").innerHTML += thisWord;
 		
 		if(thisWord == word)
 			return true;
@@ -363,17 +363,22 @@ function checkDiagonal(word, x1, x2, y1, y2)
 }
 
 function highlight(x1, y1, x2, y2) {
+	let word = "";
     //style.color and style.fontWeight idea from w3schools https://www.w3schools.com/js/js_htmldom_css.asp
     if (y1 == y2) {
         for (let i = x1-1; i < x2; i++) {
-            document.getElementById("cell" + i + (y1-1)).style.color = "red";    
+			word += table[i][y1 - 1];
+            document.getElementById("cell" + i + (y1-1)).style.color = "rgb(213, 185, 178)";    
+			document.getElementById("cell" + i + (y1-1)).style.textShadow = "2px 2px 5px rgb(162, 103, 105)";  
             document.getElementById("cell" + i + (y1-1)).style.fontWeight = "bold";
         }        
     }    
     
     else if (x1 == x2) {
         for (let i = y1-1; i < y2; i++) {
-            document.getElementById("cell" + (x1-1) + i).style.color = "red";    
+			word += table[x1 - 1][i];
+            document.getElementById("cell" + (x1-1) + i).style.color = "rgb(213, 185, 178)";    
+			document.getElementById("cell" + (x1-1) + i).style.textShadow = "2px 2px 5px rgb(162, 103, 105)";    
             document.getElementById("cell" + (x1-1) + i).style.fontWeight = "bold";
         }
     }    
@@ -382,8 +387,23 @@ function highlight(x1, y1, x2, y2) {
 		let length = Math.abs(x1 - x2) + 1;
 		document.getElementById("result").innerHTML += length;
         for (let i = 0; i < length; i++) {
-            document.getElementById("cell" + (x1 + i - 1) + (y1 + i - 1)).style.color = "red";    
+			word += table[x1 + i - 1][y1 + i - 1];
+            document.getElementById("cell" + (x1 + i - 1) + (y1 + i - 1)).style.color = "rgb(213, 185, 178)";    
+			document.getElementById("cell" + (x1 + i - 1) + (y1 + i - 1)).style.textShadow = "2px 2px 5px rgb(162, 103, 105)";     
             document.getElementById("cell" + (x1 + i - 1) + (y1 + i - 1)).style.fontWeight = "bold";
 		}
-    }    
+    } 
+
+	//document.getElementById("result").innerHTML += word;   
+	for (let i = 0; i < wordList.length; i++)
+	{
+		if(word == wordList[i])
+			strikeThrough(i);
+	}
+}
+
+function strikeThrough(wordIndex)
+{
+		//document.getElementById("result").innerHTML += "lol";
+		document.getElementById("word" + (wordIndex + 1)).style.textDecoration = "line-through";
 }
