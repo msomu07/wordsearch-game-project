@@ -105,6 +105,7 @@ function numberEntered(e) {
 "vow", "was", "wax", "web", "wet", "wry", "zoo", "zip", "isopod", "worm"]; //database !
  
 var wordList = createWordList(allWords);
+var wordListCopy = [];
 
 function createWordList(database) {
 	var arr = [];
@@ -139,6 +140,7 @@ function run() { // main running method
 	for (let i = 0; i < wordList.length; i++) {
 		wordAndDirection[i] = new Array(2);
 		var word = wordList[i];
+		wordListCopy[i] = wordList[i];
 		var dir = directions[Math.floor(Math.random()*3)];
 		wordAndDirection[i][0] = word; //lololol
 		wordAndDirection[i][1] = dir; //lololol
@@ -146,12 +148,12 @@ function run() { // main running method
 	}
 	
 	// putting random letters wherever there isnt a word
-	for (let i = 0; i < 10; i++) {
+	/*for (let i = 0; i < 10; i++) {
 		for (let j = 0; j < 20; j++) {
 			if (table[i][j] == ".")
 				table[i][j] = String.fromCharCode(Math.floor(Math.random()*26+97));
 		}
-	}
+	}*/
 	
 	displayTable(table);
 	
@@ -245,12 +247,18 @@ function checkWord()
 		//document.getElementById("result").innerHTML += isCorrect; 
 		if(isCorrect) {
 			highlight(x1, y1, x2, y2);
-			++correctWordCount;
-			if (correctWordCount == 5)
-				winModal();
 		}
-		if (!isCorrect)
+		else
 			incorrectModal();
+			
+		var allZero = true;	
+		
+		for (let i = 0; i < 5; i++) {
+			if (wordListCopy[i] != 0)
+				allZero = false;
+		}
+		if (allZero)
+			winModal();
 	}
 }
 
@@ -507,7 +515,7 @@ function highlight(x1, y1, x2, y2) {
     
     else {
 		let length = Math.abs(x1 - x2) + 1;
-		document.getElementById("result").innerHTML += length;
+		//document.getElementById("result").innerHTML += length;
         for (let i = 0; i < length; i++) {
 			word += table[x1 + i - 1][y1 + i - 1];
             document.getElementById("cell" + (x1 + i - 1) + (y1 + i - 1)).style.color = "rgb(236, 226, 208)";   
@@ -519,8 +527,10 @@ function highlight(x1, y1, x2, y2) {
 	//document.getElementById("result").innerHTML += word;   
 	for (let i = 0; i < wordList.length; i++)
 	{
-		if(word == wordList[i])
+		if(word == wordList[i]) {
+			wordListCopy[i] = "0";
 			strikeThrough(i);
+		}
 	}
 }
 
