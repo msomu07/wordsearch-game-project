@@ -45,9 +45,9 @@ table {
 }
 
 #row {
-	margin-top: 43px;
+	margin-top: 55px;
 	border-spacing : 10.04px;
-	margin-left: -5px;
+	margin-left: -16px;
 	color: rgb(236, 226, 208);
 	font-family: times;
 	font-weight: bold;
@@ -56,34 +56,30 @@ table {
 }
 
 td {
-	padding: 5px;
+	padding: 6px;
 	font-size: 35px;
 }
 
 input {
-	height: 40px;
-	width: 50px;
-	font-size: 30px;
+	font-size: 70px;
 	margin-left: 350px;
 }
 
 #input-div {
-	margin-top: -70px;
-	margin-left: 700px;
+	margin-top: -80px;
 	width: 450px;
-	margin-right: 11%;
+	margin-right: 15%;
 }
 
 .label {
-	margin-top: 40px;
-	font-size: 30px;
-	width: 400px;
+	margin-top: 65px;
+	font-size: 32px;
+	width: 450px;
 }
 	
 .input {
-	margin-top: 40px;
+	margin-top: 50px;
 	text-align: center;
-	font-size: 50px;
 	
 	background-color: rgb(162, 103, 105);
 	color: rgb(236, 226, 208);
@@ -98,12 +94,12 @@ input {
 
 #labels {
 	margin-top: 50px;
-	width: 350px;
+	width: 400px;
 }
 
 #inputs {
-	margin-top: -470px;
-	margin-left: 90px;
+	margin-top: -575px;
+	margin-left: 140px;
 }
 
 #word-grid {
@@ -130,45 +126,29 @@ input {
 
 #button {
 	position: absolute;
-	font-size: 130px;
-	width: 420px;
-	height: 100px;
-	margin-left: -41%;
-	margin-top: 40px;
+	font-size: 200px;
+	width: 600px;
+	height: 140px;
+	margin-left: -47.6%;
+	margin-top: 100px;
 	
 	background-color: rgb(162, 103, 105);
 	color: rgb(236, 226, 208);
-	border-radius: 20px;
+	border-radius: 30px;
 	border: 5px solid rgb(236, 226, 208);
 	padding-top: 10px;
 	font-family: shalma;
 	text-shadow: 2px 2px 5px rgb(49, 47, 47);
 }
 
-#instructions {
-	position: absolute;
-	margin-right: 25px;
-	margin-top: -80px;
-	border-radius: 30px;
-	font-size: 80px;
-	width: 50px;
-	height: 50px;
-	
-	background-color: rgb(162, 103, 105);
-	color: rgb(236, 226, 208);
-	border: 3px solid rgb(236, 226, 208);
-	font-family: shalma;
-	text-shadow: 2px 2px 5px rgb(49, 47, 47);
-}
-
 #menu {
 	position: absolute;
-	margin-right: 100px;
-	margin-top: -80px;
-	border-radius: 20px;
-	font-size: 80px;
-	width: 80px;
-	height: 50px;
+	margin-right: 50px;
+	margin-top: -70px;
+	border-radius: 30px;
+	font-size: 120px;
+	width: 110px;
+	height: 80px;
 	
 	background-color: rgb(162, 103, 105);
 	color: rgb(236, 226, 208);
@@ -182,7 +162,7 @@ input {
 	float: center;
 	text-align: left;
 	margin-left: 10px;
-	margin-top: 190px;
+	margin-top: 200px;
 	font-size: 20px;
 	font-family: times;
 }
@@ -198,8 +178,7 @@ input {
 }
 
 .words {
-	padding: 20px;
-	margin-top: -20px;
+	padding: 25px;
 }
 
 #slay {
