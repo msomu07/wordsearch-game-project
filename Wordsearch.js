@@ -1,19 +1,19 @@
-function goToPage(nextPage)
+function goToPage(nextPage) // function to go to a different page
 {
 	window.location.href = nextPage;
 	location.replace(nextPage);
 }
 //----------------------------------------------------------------------
-let x1Input = document.querySelector("#x1");
+let x1Input = document.querySelector("#x1"); // starting row
 x1Input.addEventListener("input", numberEntered, false);
 
-let y1Input = document.querySelector("#y1");
+let y1Input = document.querySelector("#y1"); // starting column
 y1Input.addEventListener("input", numberEntered, false);
 
-let x2Input = document.querySelector("#x2");
+let x2Input = document.querySelector("#x2"); // ending row
 x2Input.addEventListener("input", numberEntered, false);
 
-let y2Input = document.querySelector("#y2");
+let y2Input = document.querySelector("#y2"); // ending column
 y2Input.addEventListener("input", numberEntered, false);
 
 let wordAndDirection;
@@ -21,64 +21,13 @@ var table;
 var valid;
 var correctWordCount = 0;
 
-function numberEntered(e) {
+function numberEntered(e) { // numberentered
         valid.value = isValid();
 }
 
-/*function printVals() {
-        let x1 = 0;
-        if(x1Input.value == Number(x1Input.value))
-                x1 = Number(x1Input.value);
-        if (x1 >= 0 && x1 <= 20)
-			document.getElementById("box1").innerHTML = x1;
-        
-        let y1 = 0;
-        if(y1Input.value == Number(y1Input.value))
-                y1 = Number(y1Input.value);
-        if (y1 >= 0 && y1 <= 10)
-			document.getElementById("box2").innerHTML = y1;
-        
-        let x2 = 0;
-        if(x2Input.value == Number(x2Input.value))
-                x2 = Number(x2Input.value);
-        if (x2 >= 0 && x2 <= 20)
-			document.getElementById("box3").innerHTML = x2;
-        
-        let y2 = 0;
-        if(y2Input.value == Number(y2Input.value))
-                y2 = Number(y2Input.value);
-        if (y2 >= 0 && y2 <= 10)
-			document.getElementById("box4").innerHTML = y2;
-}*/
-
- //printVals();
- 
- var allWords = ["abandoned","abjection", "absolute", "academic", 
- "accident", "accurate", "actually", "addition", "adequate", "computer",
- "conclude", "convince", "corridor", "coverage", "covering", "creation",
- "creative", "creature", "customer", "darkness", "database", "daughter",
- "daylight", "deadline", "deciding", "decision", "decrease", "deferred",
- "definite", "delicate", "delivery", "describe", "division", "duration",
- "dynamics", "eagerness", "earnings", "economic", "emerging", "emission",
- "empathize", "equation", "equipment", "firewall", "floating", "foothill",
- "forecast", "foremost", "formerly", "function", "fuzziness", "generate",
- "generous", "greatest", "guardian", "guidance", "handling", "hardware",
- "headline", "heritage", "immunizer", "included", "increase", "indicate",
- "indirect", "industry", "informal", "informed", "inherent", "initiate",
- "injective", "innocent", "invasion", "investor", "involved", "isolated",
- "judgment", "judicial", "jumpiness", "junction", "keyboard", "landlord",
- "language", "laughter", "learning", "leverage", "lifetime", "objectify",
- "observer", "occasion", "offering", "official", "offshore", "operator",
- "opponent", "opposite", "optimism", "optional", "peaceful", "perceive",
- "periodic", "personal", "persuade", "petition", "physical", "pipeline",
- "planning", "possibly", "powerful", "practice", "precious", "presence",
- "preserve", "pressing", "pressure", "previous", "princess", "printing",
- "priority", "prisoner", "probable", "probably", "producer", "profound",
- "progress", "quadrants", "question", "quickness", "quizzical", "recently",
- "recognize", "recovery", "reflexive", "regional", "register", "regulate",
- "relation", "relative", "relevant", "unquietly", "verbalize", "visualize",
- "vocalizer", "vulgarize", "wakefully", "zestfully",
- "abate", "annual", "above", "accept", "again", "agent",
+ // database of words
+ // some words taken from https://7esl.com/5-letter-words/
+ var allWords = ["abate", "annual", "above", "accept", "again", "agent",
  "appear", "assume", "bank", "begin", "behind", "benefit", "believe", 
  "behave", "budget", "camera", "catch", "cause", "central", "charge",
  "choice", "color", "consume", "design", "detail", "dinner", "discuss",
@@ -93,8 +42,9 @@ function numberEntered(e) {
  "sign", "simple", "small", "smile", "social", "source", "stock", 
  "suffer", "table", "teacher", "thought", "travel", "until", "value",
  "voice", "watch", "weight", "whole", "whose", "worker", "writer", "young", 
-"aim", "ago", "bag",
- "bad", "bee", "bar", "bun", "car", "cap", "cop", "duo",
+ "aim", "ago", "bag","bad", "bee", "bar", "bun", "car", "cap", "cop", "duo",
+ "adult", "agent", "apple", "award", "beach", "birth", "drama", "dream",
+ "dress", "drink", "enemy", "entry", "faith", "admit",
  "dig", "dip", "ego", "egg", "elf", "fry", "fog", "foe", "fur",
  "gag", "gap", "gas", "gel", "gig", "got", "gum", "gut", "had",
  "ham", "hue", "icy", "jam", "jar", "jet", "jog", "joy",
@@ -102,25 +52,48 @@ function numberEntered(e) {
  "mix", "new", "not", "old", "odd", "oak", "ore", 
  "owe", "pad", "pal", "peg", "paw", "pen", "pup", "rap", "rat",
  "ran", "raw", "saw", "tee", "top", "toy",
-"vow", "was", "wax", "web", "wet", "wry", "zoo", "zip", "isopod", "worm"]; //database !
- 
+"vow", "was", "wax", "web", "wet", "wry", "zoo", "zip", "isopod", "worm",
+"Adult", "Agent", "Anger", "Apple", "Award", "Basis", "Beach", "Birth", 
+"Block", "Board", "Brain", "Bread", "Break", "Brown", "Buyer", "Cause", 
+"Chain", "Chair", "Chest", "Chief", "Child", "China", "Claim", "Class", 
+"Clock", "Coach", "Coast", "Court", "Cover", "Cream", "Crime", "Cross",
+"Crowd", "Crown", "Cycle", "Dance", "Death", "Depth", "Doubt", "Draft", 
+"Drama", "Dream", "Dress", "Drink", "Drive", "Earth", "Enemy", "Entry", 
+"Error", "Event", "Faith", "Fault", "Field", "Fight", "Final", "Floor", 
+"Focus", "Force", "Frame", "Frank", "Front", "Fruit", "Glass", "Grant", 
+"Grass", "Green", "Group", "Guide", "Heart", "Horse", "Hotel", "House", 
+"Image", "Index", "Input", "Issue", "Judge", "Layer", "Level", "Light", 
+"Limit", "Lunch", "Metal", "Model", "Money", "Month", "Motor", "Mouth", 
+"Music", "Night", "Noise", "North", "Novel", "Nurse", "Offer", "Order", 
+"Other", "Owner", "Panel", "Paper", "Party", "Peace", "Peter", "Phase", 
+"Phone", "Piece", "Pilot", "Pitch", "Place", "Plane", "Plant", "Plate",
+ "Point", "Pound", "Power", "Press", "Price", "Pride", "Prize", "Proof", 
+ "Queen", "Radio", "Range", "Ratio", "Reply", "Right", "River", "Round", 
+ "Route", "Scale", "Scene", "Scope", "Score", "Sense", "Shape", "Share", 
+ "Sheep", "Sheet", "Shift", "Shirt", "Shock", "Sight", "Simon", "Skill", 
+ "Sleep", "Smile", "Sound", "Space", "Speed", "Spite", "Sport", "Squad", 
+ "Staff", "Stage", "Start", "State", "Steam", "Steel", "Stock", "Stone",
+ "Store", "Study", "Stuff", "Style", "Sugar", "Table", "Taste", "Theme",
+ "Thing", "Title", "Total", "Touch", "Tower", "Track", "Trade", "Train", 
+ "Trend", "Trial", "Trust", "Truth", "Uncle", "Union", "Unity", "Value", 
+ "Video", "Visit", "Voice", "Waste", "Watch", "Water", "While", "White", 
+ "Whole", "Woman", "World", "Youth", "Admit"]; 
+
 var wordList = createWordList(allWords);
 var wordListCopy = [];
 
-function createWordList(database) {
-	var arr = [];
+function createWordList(database) { // creates a list of 5 random words
+	var arr = []; // temporary storage
 	var same = false;
-	for (let i = 0; i < 5; i++)
-		arr[i] = database[Math.floor(Math.random() * database.length)];
 	for (let i = 0; i < 5; i++) {
+		arr[i] = database[Math.floor(Math.random() * database.length)].toLowerCase();
 		for (let j = 0; j < 5; j++) {
 			if (i != j && arr[i] == arr[j])
 				same = true;
 		}
+		if (same)
+			arr[i] = database[Math.floor(Math.random() * database.length)];
 	}
-	if (same)
-		createWordList(database);
-	else
 		return arr;
 }
 
@@ -134,26 +107,27 @@ function run() { // main running method
 	}
 	
 	//inserting a word
-	var directions = ["vertical", "horizontal", "diagonal"];
-	printWordBank(wordList);
-	wordAndDirection = new Array(wordList.length); //lololol
+	var directions = ["vertical", "horizontal", "diagonal"]; // array of directions
+	printWordBank(wordList); // displays word bank on the screen
+	wordAndDirection = new Array(wordList.length); // pairs a random word with
+	// a random direction 
 	for (let i = 0; i < wordList.length; i++) {
 		wordAndDirection[i] = new Array(2);
 		var word = wordList[i];
 		wordListCopy[i] = wordList[i];
 		var dir = directions[Math.floor(Math.random()*3)];
-		wordAndDirection[i][0] = word; //lololol
-		wordAndDirection[i][1] = dir; //lololol
+		wordAndDirection[i][0] = word;
+		wordAndDirection[i][1] = dir;
 		table = insertWord(word, dir, table);
 	}
 	
 	// putting random letters wherever there isnt a word
-	/*for (let i = 0; i < 10; i++) {
+	for (let i = 0; i < 10; i++) {
 		for (let j = 0; j < 20; j++) {
 			if (table[i][j] == ".")
 				table[i][j] = String.fromCharCode(Math.floor(Math.random()*26+97));
 		}
-	}*/
+	}
 	
 	displayTable(table);
 	
@@ -169,11 +143,24 @@ function displayTable(table) { // displays the 2d array as a table
 	}
 }
 
-function insertWord(word, dir, table) {
+function pickNewWord(word) { // picks another word if a word doesnt fit
+	let i;
+	for(i = 0; i < wordList.length; i++)
+	{
+		if(word == wordList[i])
+		{
+			wordList[i] == allWords[Math.floor(Math.random * (allWords.length - 1))];
+			break;
+		}
+	}
+	return wordList[i];
+}
+
+function insertWord(word, dir, table) { // puts the word in the table
 	var insertTheWord = true; // boolean to check if another word is already
 	// in a certain area -- if insertTheWord is false, the function shouldn't
 	// put a new word in that area
-	if (dir == "horizontal") {
+	if (dir == "horizontal") { // increments the row coords
 		var x = Math.floor(Math.random()*(20 - word.length));
 		var y = Math.floor(Math.random()*10)
 		for (let i = 0; i < word.length; i++) {
@@ -188,7 +175,7 @@ function insertWord(word, dir, table) {
 			insertWord(word, dir, table)
 		return table;
 	}
-	if (dir == "vertical" && insertTheWord) {
+	if (dir == "vertical" && insertTheWord) { // increments column coords
 		var x = Math.floor(Math.random()*20);
 		var y = Math.floor(Math.random()*(10 - word.length));
 		for (let i = 0; i < word.length; i++) {
@@ -203,12 +190,14 @@ function insertWord(word, dir, table) {
 			insertWord(word, dir, table)
 		return table;
 	}
-	if (dir == "diagonal" && insertTheWord) {
+	if (dir == "diagonal" && insertTheWord) { // increments row and column
 		var x = Math.floor(Math.random()*(20 - word.length));
 		var y = Math.floor(Math.random()*(10 - word.length));
 		for (let i = 0; i < word.length; i++) {
-			if (table[y + i][x + i] != ".")
+			if (table[y + i][x + i] != ".") {
 				insertTheWord = false;
+				word = pickNewWord(word);
+			}
 		}
 		if (insertTheWord) {
 			for (let i = 0; i < word.length; i++) 
@@ -221,7 +210,7 @@ function insertWord(word, dir, table) {
 }
 
 //----------------------------------------------------------------------
-function printWordBank(wordList)
+function printWordBank(wordList) // prints the word back
 {
 	document.getElementById("word1").innerHTML = wordList[0];
 	document.getElementById("word2").innerHTML = wordList[1];
@@ -235,7 +224,7 @@ let x2 = Number(x2Input.value);
 let y1 = Number(y1Input.value);
 let y2 = Number(y2Input.value);
 
-function checkWord()
+function checkWord() // checks the user's input
 {
 	valid = isValid(); //checks if all are true or not
 	
@@ -298,6 +287,7 @@ function isValid()
 	return false;
 }
 
+// all modal code is based on https://www.w3schools.com/howto/howto_css_modals.asp
 function errorModal()
 {
 	// Get the modal
@@ -386,34 +376,19 @@ function winModal()
 		document.getElementById("win-message").innerHTML = "YOU WIN!!!";
 }
 
-function checkDirection(x1, x2, y1, y2)
+function checkDirection(x1, x2, y1, y2) // finds the direction of the word
 {
 	let isCorrect = false;
 	
 	for (let i = 0; i < wordAndDirection.length; i++) //checks if the word matches a word in wordList
 	{
-		//document.getElementById("result").innerHTML += wordAndDirection[i][0] + " " + wordAndDirection[i][1] + " ";
 		if(wordAndDirection[i][1] == "horizontal")
-		{
-			//document.getElementById("result").innerHTML += wordAndDirection[i][0];
 			isCorrect = checkHorizontal(wordAndDirection[i][0], x1, x2, y1, y2); //check these next
-			//document.getElementById("result").innerHTML += isCorrect;
-		}
 		else if(wordAndDirection[i][1] == "vertical")
-		{
-			//document.getElementById("result").innerHTML += wordAndDirection[i][0];
 			isCorrect = checkVertical(wordAndDirection[i][0], x1, x2, y1, y2);
-			//document.getElementById("result").innerHTML += isCorrect;
-		}
 		else if(wordAndDirection[i][1] == "diagonal")
-		{
-			//document.getElementById("result").innerHTML += wordAndDirection[i][0];
 			isCorrect = checkDiagonal(wordAndDirection[i][0], x1, x2, y1, y2);
-			//document.getElementById("result").innerHTML += isCorrect;
-		}
 			
-		//document.getElementById("result").innerHTML += "<br>";
-		
 		if(isCorrect)
 		{
 			strikeThrough(i);
@@ -424,9 +399,8 @@ function checkDirection(x1, x2, y1, y2)
 	return isCorrect;
 }
 
-function checkHorizontal(word, x1, x2, y1, y2)
+function checkHorizontal(word, x1, x2, y1, y2) // checks horizontal words
 {
-	//document.getElementById("result").innerHTML += "horiz ";
 	let thisWord = "";
 	
 	for (let i = y1 - 1; i < y2; i++) //checks y coords, x coords are constant
@@ -435,7 +409,6 @@ function checkHorizontal(word, x1, x2, y1, y2)
 			return false;
 			
 		thisWord += table[x1 - 1][i];
-		//document.getElementById("result").innerHTML += "" + thisWord;
 	
 		if(thisWord == word)
 			return true;
@@ -447,9 +420,8 @@ function checkHorizontal(word, x1, x2, y1, y2)
 	return true;
 }
 
-function checkVertical(word, x1, x2, y1, y2)
+function checkVertical(word, x1, x2, y1, y2) // checks vertical words
 {
-	//document.getElementById("result").innerHTML += "vert ";
 	let thisWord = "";
 	
 	for (let i = x1 - 1; i < x2; i++) //checks x coords, y coords are constant
@@ -458,7 +430,6 @@ function checkVertical(word, x1, x2, y1, y2)
 			return false;
 			
 		thisWord += table[i][y1 - 1];
-		//document.getElementById("result").innerHTML += "" + thisWord;
 		
 		if(thisWord == word)
 			return true;
@@ -470,9 +441,8 @@ function checkVertical(word, x1, x2, y1, y2)
 	return true;
 }
 
-function checkDiagonal(word, x1, x2, y1, y2)
+function checkDiagonal(word, x1, x2, y1, y2) // checks diagonal words
 {
-	//document.getElementById("result").innerHTML += "diag ";
 	let thisWord = "";
 	
 	for(let i = 0; i < word.length; i++)
@@ -485,21 +455,16 @@ function checkDiagonal(word, x1, x2, y1, y2)
 		if(thisWord == word && x2 == (x1 + i) && y2 == (y1 + i))
 			return true;
 	}		
-		
-	//if(thisWord != word)
-		return false;
-	
-	//return true;
+	return false;
 }
 
-function highlight(x1, y1, x2, y2) {
+function highlight(x1, y1, x2, y2) { // changes the color of a correct word on the table
 	let word = "";
     //style.color and style.fontWeight idea from w3schools https://www.w3schools.com/js/js_htmldom_css.asp
     if (y1 == y2) {
         for (let i = x1-1; i < x2; i++) {
 			word += table[i][y1 - 1];
             document.getElementById("cell" + i + (y1-1)).style.color = "rgb(236, 226, 208)";    
-			//document.getElementById("cell" + i + (y1-1)).style.textShadow = "2px 2px 5px rgb(49, 47, 47)";  
             document.getElementById("cell" + i + (y1-1)).style.fontWeight = "bold";
         }        
     }    
@@ -507,24 +472,20 @@ function highlight(x1, y1, x2, y2) {
     else if (x1 == x2) {
         for (let i = y1-1; i < y2; i++) {
 			word += table[x1 - 1][i];
-            document.getElementById("cell" + (x1-1) + i).style.color = "rgb(236, 226, 208)";   
-			//document.getElementById("cell" + (x1-1) + i).style.textShadow = "2px 2px 5px rgb(49, 47, 47)";    
+            document.getElementById("cell" + (x1-1) + i).style.color = "rgb(236, 226, 208)";    
             document.getElementById("cell" + (x1-1) + i).style.fontWeight = "bold";
         }
     }    
     
     else {
 		let length = Math.abs(x1 - x2) + 1;
-		//document.getElementById("result").innerHTML += length;
         for (let i = 0; i < length; i++) {
 			word += table[x1 + i - 1][y1 + i - 1];
-            document.getElementById("cell" + (x1 + i - 1) + (y1 + i - 1)).style.color = "rgb(236, 226, 208)";   
-			//document.getElementById("cell" + (x1 + i - 1) + (y1 + i - 1)).style.textShadow = "2px 2px 5px rgb(49, 47, 47)";     
+            document.getElementById("cell" + (x1 + i - 1) + (y1 + i - 1)).style.color = "rgb(236, 226, 208)";        
             document.getElementById("cell" + (x1 + i - 1) + (y1 + i - 1)).style.fontWeight = "bold";
 		}
     } 
-
-	//document.getElementById("result").innerHTML += word;   
+ 
 	for (let i = 0; i < wordList.length; i++)
 	{
 		if(word == wordList[i]) {
@@ -534,8 +495,7 @@ function highlight(x1, y1, x2, y2) {
 	}
 }
 
-function strikeThrough(wordIndex)
+function strikeThrough(wordIndex) // crosses out correct words in the word bank
 {
-		//document.getElementById("result").innerHTML += "lol";
 		document.getElementById("word" + (wordIndex + 1)).style.textDecoration = "line-through";
 }
