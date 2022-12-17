@@ -54,19 +54,20 @@ function numberEntered(e) { // numberentered
 "hotel", "house", "index", "input", "issue", "judge", "layer", "light", 
 "limit", "lunch", "metal", "model", "money", "month", "motor", "mouth", 
 "music", "night", "noise", "north", "novel", "nurse", "offer",
-"other", "owner", "panel", "party", "peace", "peter", "phase", 
+"other", "owner", "panel", "party", "peace", "phase", 
 "phone", "piece", "pilot", "pitch", "place", "plane", "plant", "plate",
  "point", "pound", "power", "press", "price", "pride", "prize", "proof", 
  "queen", "radio", "ratio", "reply", "right", "river", "round", 
  "route", "scale", "scene", "scope", "score", "sense", "shape", "share", 
- "sheep", "sheet", "shift", "shirt", "shock", "sight", "simon", "skill", 
+ "sheep", "sheet", "shift", "shirt", "shock", "sight", "skill", 
  "sleep", "smile", "sound", "space", "speed", "spite", "sport", "squad", 
  "staff", "stage", "start", "state", "steam", "steel", "stock", "stone",
  "store", "study", "stuff", "style", "sugar", "taste", "theme",
  "thing", "title", "total", "touch", "tower", "track", "trade", "train", 
  "trend", "trial", "trust", "truth", "uncle", "union", "unity", 
  "video", "visit", "waste", "water", "while", "white", 
- "whole", "woman", "world", "youth", "slay", "because", "java", "bike"]; 
+ "whole", "woman", "world", "youth", "slay", "because", "java", "bike",
+"happy", "toast", "computer"]; 
 
 var wordList = createWordList(allWords);
 var wordListCopy = [];
